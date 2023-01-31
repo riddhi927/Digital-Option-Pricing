@@ -28,7 +28,14 @@ opt = Option.Option(K, r, sigma, T, t, r0, paths)
 blackScholesValue = opt.calculateValue0()
 print("option value Black-Scholes Analytic",blackScholesValue)
 
- 
+#Scenario Analysis
+#the time to maturity adjusted to 2 months, since we are conducting our analysis 
+#one month forward
+scenarioAnalysis = Option.ScenarioAnalysis(K, r, sigma, 0.167, t, r0)
+values = scenarioAnalysis.calculateValue0()
+scenarioAnalysis.graphScenario()
+
+
 #monte carlo simulation 
 opt = Option.Option(K, r, sigma, T, t, r0, paths)
 GBM = Option.GeometricBrowninanMotion(opt)
